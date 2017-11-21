@@ -1,7 +1,7 @@
 //项目入口文件
 
-import React from "react"
-import ReactDOM from "react-dom"
+import * as React from "react"
+import * as ReactDOM from "react-dom"
 import { AppContainer as HotLoader } from "react-hot-loader"     //react-hot-loader  热更新可以保存状态  
 import { Provider } from "react-redux"
 
@@ -17,10 +17,11 @@ const render = ( Component ) => {
                 <Component/>
             </Provider>
         </HotLoader>,
-        document.getElementById('root')
+        document.getElementById('root') as HTMLElement
     )
 }
 render(App)
+
 //webpack内置对象
 if (module.hot) {
     module.hot.accept("app", () => {

@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { Router, browserHistory } from "react-router"
 import routes from "shared/libs/routes"
 

@@ -6,6 +6,9 @@ export interface HomeAction{
     type:TEST_ACTION,
     name:any
 }
+
+// export type HomeAction = HomeAction
+
 export default function (parmas:string = '李金珂666'):HomeAction {        
     return async function (dispatch) {
         dispatch({

@@ -1,5 +1,6 @@
-import React from 'react'
-import "./styles.less"
+import * as React from 'react'
+
+require("./styles.less")
 
 //定义接口
 export interface HomeProps {

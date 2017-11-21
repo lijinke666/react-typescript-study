@@ -1,16 +1,19 @@
 {
     "compilerOptions": {
-        "outDir": "./dist/",
-        "sourceMap": true,
-        "noImplicitAny": true,
-        "module": "commonjs",
-        "target": "es5",
+        "outDir": "./dist/",         //输出目录
+        "sourceMap": true, 
+        "noImplicitAny": true,        //无法判断出类型是 任然生成js文件,但会报错
+        "module": "commonjs",        //代码规范
+        "target": "es5",             //转成es5
         "jsx": "react"
     },
-    "include": [
+    "include": [                     //需要编译的目录
         "./src/**/*"
     ],
-    "files": [
-        "./src/index.ts"
+    "lib":[
+         "dom",
+         "es6",
+         "dom.iterable",
+         "scripthost"
     ]
 }

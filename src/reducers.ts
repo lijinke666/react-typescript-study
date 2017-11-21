@@ -3,9 +3,11 @@
 import HomeAction from "Home/reducer"
 
 import { combineReducers } from "redux"     //reducer的合并
+import { routerReducer } from "react-router-redux"
 
 const chatReducer = combineReducers({
-  HomeAction
+  HomeAction,
+  routing:routerReducer
 })
 
 export default chatReducer

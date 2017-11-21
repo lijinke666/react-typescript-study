@@ -2,7 +2,7 @@
  * @Author: jinke.li 
  * @Date: 2017-05-03 16:32:21 
  * @Last Modified by: jinke.li
- * @Last Modified time: 2017-11-20 16:00:52
+ * @Last Modified time: 2017-11-21 12:30:30
  */
 const path = require('path')
 const webpack = require('webpack')
@@ -90,6 +90,7 @@ module.exports = (env) => {
                     exclude: "/node_modules/",
                     include: [path.resolve("src")]        //只遍历src目录下的
                 },
+                { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
                 {
                     test: /\.less$/,
                     use: mode === "DEV"      //开发环境 css打包到js中
