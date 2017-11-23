@@ -1,19 +1,39 @@
 {
     "compilerOptions": {
-        "outDir": "./dist/",         //输出目录
-        "sourceMap": true, 
-        "noImplicitAny": true,        //无法判断出类型是 任然生成js文件,但会报错
-        "module": "commonjs",        //代码规范
-        "target": "es5",             //转成es5
+        "outDir": "dist", //输出目录
+        "sourceMap": true,
+        "noImplicitAny": true, //无法判断出类型是 任然生成js文件,但会报错
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true, //修饰器
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noUnusedLocals": true,
+        "allowSyntheticDefaultImports": true,
+        "module": "commonjs", //代码规范
+        "target": "es5", //转成es5
+        "lib": [
+            "es6",
+            "dom"
+        ],
         "jsx": "react"
     },
-    "include": [                     //需要编译的目录
+    "include": [ //需要编译的目录
         "./src/**/*"
     ],
-    "lib":[
-         "dom",
-         "es6",
-         "dom.iterable",
-         "scripthost"
+    "exclude": [ //忽略
+        "dist",
+        "node_modules"
+    ],
+    "types": [
+        "typePatches"
+    ],
+    "lib": [
+        "dom",
+        "es6",
+        "dom.iterable",
+        "scripthost"
     ]
 }

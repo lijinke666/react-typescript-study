@@ -1,4 +1,4 @@
-import NProgress from "nprogress"
+import * as NProgress from "nprogress"
 import "nprogress/nprogress.css"
 
 //这里引入你的路由
@@ -7,9 +7,9 @@ const Home = () => loadRoute(import(/* webpackChunkName:"Home" */ 'Home'))      
 const Test = () => loadRoute(import(/* webpackChunkName:"Test" */ 'app/test'))   //测试组件路由
 
 //按需加载路由
-const loadRoute = (importFn, name = "default") => {
+const loadRoute = (importFn:any, name:string = "default") => {
   NProgress.start()
-  return importFn.then((module) => {
+  return importFn.then((module:any) => {
     NProgress.done()
     NProgress.remove()
     return module[name]

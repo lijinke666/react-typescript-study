@@ -1,19 +1,19 @@
-import {TEST_ACTION} from "../action"
+import { TEST_ACTION } from "../action"
 
 export interface ActionType {
-    name?:string,
-    type:string
+    type: string
+    name?: string,
 }
-interface StoreType{
-    name?:string
+export interface StoreType {
+    name: string
 }
 
-export type StateType  = StoreType
+export type StateType = StoreType
 const defaultState = {
-    name:'李金珂666'
+    name: '李金珂666'
 }
-export default function (state:StateType = defaultState, action:ActionType) {
-    const {type,name} = action
+export default function (state: StoreType, action: ActionType): StoreType {
+    const { type, name } = action
     switch (type) {
         case TEST_ACTION:
             return {

@@ -1,22 +1,26 @@
 import * as React from 'react'
+import {connect} from "react-redux"
+import {bindActionCreators} from "redux"
+import * as actions from "./action"
+import * as reducers from "./reducer"
 
-require("./styles.less")
+// require("./styles.less")
 
 //定义接口
 
-//定义 props 的类型
+//定义 props 的类型  相当于 PropsTypes
 export interface HomeProps {
   name:string,
-  getMyName?: void
+  getMyName?: ()=> void
 }
 
 @connect(
-  ({ HomeAction }) => ({
+  ({ HomeAction }: reducers.StoreType) => ({
     name: HomeAction.name,
   }),
-  (dispatch:Dispatch<{}>) => (
+  (dispatch:Dispatch<actions.HomeAction>) => (
     bindActionCreators<{}>({
-      getMyName
+      getMyName:actions.getName
     }, dispatch)
   )
 )

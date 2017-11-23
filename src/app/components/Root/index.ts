@@ -1,10 +1,10 @@
-import React from "react"
+import * as React from "react"
 
 interface RootProps {
-
+  children?:any
 }
 export default class Root extends React.PureComponent<RootProps,{}>{
-  constructor(props) {
+  constructor(props:object) {
     super(props)
   }
   public render():JSX.Element {

@@ -1,8 +1,8 @@
 /*
  * @Author: jinke.li 
  * @Date: 2017-07-17 19:42:21 
- * @Last Modified by:   jinke.li 
- * @Last Modified time: 2017-07-17 19:42:21 
+ * @Last Modified by: jinke.li
+ * @Last Modified time: 2017-11-23 15:58:00
  */
 import obj2Query from "libs/params"
 import Message from "shared/components/Message"
@@ -31,7 +31,7 @@ const helper = {
     "ERROR": "接口请求失败:(",
     "TIMEOUT": "网络不给力,请求超时:("
   },
-  jsonToString(params) {
+  jsonToString(params?:object) {
     return obj2Query.toQueryString(params)
   },
   /**
@@ -39,7 +39,7 @@ const helper = {
    * @param {any} url 
    * @param {any} params 
    */
-  async getMockJson(url, params) {
+  async getMockJson(url:string, params?:object) {
     NProgress.start()
     const data = await (
       fetch(`${mock_host}:${mock_port}${url}${params ? '?' + (this.jsonToString(params)) : ''}`, {
@@ -55,7 +55,7 @@ const helper = {
    * parmas {params} obj 请求参数 
    */
 
-  async getJson(url, params) {
+  async getJson(url:string, params?:object) {
     NProgress.start()
     const data = await (
       fetch(`${host}:${port}${url}${params ? '?' + (this.jsonToString(params)) : ''}`, {
@@ -73,7 +73,7 @@ const helper = {
    * parmas {isForm} boolean 是否是表单提交 表单提交 如:formData 
    */
 
-  async postJson(url, params, isForm = false) {
+  async postJson(url:string, params?:object, isForm = false) {
     const fetchConfig = {
       method: "POST",
       mode: "cors",
@@ -89,7 +89,7 @@ const helper = {
     NProgress.remove()
   },
   //全局处理错误
-  sendResponse(data) {
+  sendResponse(data:any) {
     const { status } = data
     switch (status) {
       case this.resCode['SUCCESS']:

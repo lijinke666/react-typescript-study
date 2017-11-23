@@ -1,15 +1,18 @@
 
-import React from "react"
+import * as React from "react"
 import Button from "shared/components/Button"
 import Message from "shared/components/Message"
 
-export default class Test extends React.PureComponent {
-  constructor(props) {
-    super(props)
+export interface TestProps {
+
+}
+export default class Test extends React.PureComponent <TestProps,{}>{
+  constructor(props:object){
+    super(props as TestProps)
   }
-  render() {
+  public render() : JSX.Element{
     return (
-      <div>
+      <div className="test">
         <Button type="primary">李金珂真帅!</Button>
       </div>
     )
