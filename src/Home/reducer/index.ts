@@ -1,8 +1,8 @@
 import { TEST_ACTION } from "../action"
 
 export interface ActionType {
-    type: string
-    name?: string,
+    type: string 
+    name?: string
 }
 export interface StoreType {
     name: string

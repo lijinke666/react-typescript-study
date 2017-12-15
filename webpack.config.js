@@ -1,9 +1,3 @@
-/*
- * @Author: jinke.li 
- * @Date: 2017-05-03 16:32:21 
- * @Last Modified by: jinke.li
- * @Last Modified time: 2017-11-21 12:30:30
- */
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require("html-webpack-plugin")            //自动生成一个html 引入打包之后的js
@@ -51,7 +45,7 @@ module.exports = (env) => {
                 "react-hot-loader/patch",        //热更新
                 `webpack-dev-server/client?${host}:${dev_port}`,
                 "webpack/hot/only-dev-server",
-                path.resolve(__dirname, "src/index.ts")
+                path.resolve(__dirname, "src/Home/index.ts")
             ]
             : {
                 app: path.resolve(__dirname, "src/index.ts"),
@@ -75,19 +69,10 @@ module.exports = (env) => {
         module: {
             rules: [
                 {
-                    test: /\.js[x]?$/,
+                    test: /\.(t|j)s[x]?$/,
                     use: [{
-                        loader: "babel-loader"
+                        loader: "awesome-typescript-loader"
                     }],
-                    exclude: "/node_modules/",
-                    include: [path.resolve("src")]        //只遍历src目录下的
-                },
-                {
-                    test: /\.ts[x]?$/,
-                    use: [{
-                        loader: "ts-loader"
-                    }],
-                    exclude: "/node_modules/",
                     include: [path.resolve("src")]        //只遍历src目录下的
                 },
                 { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
