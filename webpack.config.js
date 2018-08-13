@@ -4,12 +4,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")            //自动生�
 const ExtractTextPlugin = require("extract-text-webpack-plugin")    //默认打包css 这些全部在js 里面  用这个可以分离出来 单独生成css文件  //生产环节会用到
 const OpenBrowserPlugin = require('open-browser-webpack-plugin')   //打包完成自动打开浏览器
 const CopyWebpackPlugin = require('copy-webpack-plugin')           //拷贝文件  当有第三方依赖可以copy到打包文件夹中
-const autoprefixer = require('autoprefixer')                       //自动加前缀
 const CptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin') //压缩css
 const ImageminPlugin = require('imagemin-webpack-plugin').default         //压缩图片
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')       //生成打包图
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');            //webpack3 单独分离出来了这个压缩的
-const AddStaticCachePlugin = require('add-static-cache-webpack-plugin')      //自己写的 写入缓存插件
 
 const { host, dev_port } = require("./config")
 
@@ -45,10 +42,10 @@ module.exports = (env) => {
                 "react-hot-loader/patch",        //热更新
                 `webpack-dev-server/client?${host}:${dev_port}`,
                 "webpack/hot/only-dev-server",
-                path.resolve(__dirname, "src/Home/index.ts")
+                path.resolve(__dirname, "src/index.tsx")
             ]
             : {
-                app: path.resolve(__dirname, "src/index.ts"),
+                app: path.resolve(__dirname, "src/index.tsx"),
             },
 
         //打包输出
@@ -255,13 +252,6 @@ module.exports = (env) => {
                 cssProcessorOptions: { discardComments: { removeAll: true } }, //移除所有注释
                 canPrint: true        //是否向控制台打印消息
             }),
-            //这个插件是我自己写的  用来动态生成webpack打包之后 的cache文件
-            new AddStaticCachePlugin({
-                template:path.resolve(__dirname,'cacheTemp.tpl'),
-                cacheName:"react-project.appcache",            //缓存文件名
-                comments:"如果你需要缓存一些静态资源",       //注释
-                publicPath:"/"                 //公共路径
-            })
         ])
     }
     options.plugins.push(
